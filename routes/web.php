@@ -12,7 +12,10 @@
 */
 
 Route::get('/', 'productController@index');
-
+Route::get('/add-to-cart/{id}', [
+  'uses' => 'productController@addToCart',
+     'as' => 'product.addToCart']);
+Route::get('/shopping-cart', 'productController@getCart');
 Auth::routes();
 
-Route::get('/index', 'HomeController@index')->name('Hawa Store');
+Route::get('/profile', 'HomeController@index')->name('Hawa Store');

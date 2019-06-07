@@ -12,7 +12,7 @@
             <h5 class="card-title">{{$product->title}}</h5>
             <p class="card-text">{{$product->description}}</p>
             <p class="mr-20 py-10">Tsh.{{$product->price}}</p>
-            <a href="#" class="btn btn-danger mr-10 py-10 float-right"><i class="fas fa-shopping-cart">add to cart</i></a>
+            <a href="{{route('product.addToCart', ['id' =>$product->id])}}" class="btn btn-danger mr-10 py-10 float-right"><i class="fas fa-shopping-cart">add to cart</i></a>
           </div>
      </div>
     </div>
