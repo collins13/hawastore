@@ -67,10 +67,10 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Cart</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">user Account</a>
+                            <a class="nav-link" href="{{'shopping-cart'}}">
+                              <i class="fas fa-shopping-cart">Shopping Cart</i>
+                              <span class="badge">{{Session::has('cart')? Session::get('cart')->totalQty:''}}</span>
+                            </a>
                         </li>
                         @guest
                             <li class="nav-item">
