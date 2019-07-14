@@ -5,13 +5,14 @@ use App\Cart;
 use Illuminate\Http\Request;
 use App\Product;
 use Session;
-<<<<<<< HEAD
-=======
-
->>>>>>> 624aba843e12b04359d2c8e89398c0ac3d3fa22a
+use Stripe\Charge;
+use Stripe\Stripe;
 class productController extends Controller
 {
-
+  public function __construct()
+  {
+    $this->middleware('auth')->except('index');
+  }
 
 /*  public function __construct()
   {
@@ -52,44 +53,39 @@ class productController extends Controller
       $oldCart = Session::get('cart');
       $cart = new Cart($oldCart);
       $total = $cart->totalPrice;
+      $products = $cart->items;
 
-<<<<<<< HEAD
-      return view('shop.checkout')->with('total', $total);
+      return view('shop.checkout')->with('total', $total)
+                                  ->with('products', $products);
     }
-=======
-
-    public function addToCart(Request $request, $id){
-      $products = Product::find($id);
-
-      $oldCart = Session::has('cart')? Session::get('cart'):null;
-      $cart = new Cart($oldCart);
-      $cart->add($products, $products->id);
-
-      $request->session('cart')->put('cart', $cart);
-      //dd($request->session()->get('cart'));
-
-      return redirect('/');
-    }
-
-    public function getCart(){
-      if (!Session::has('cart')) {
-        return view('shop.shopping-cart', ['products' => null]);
-      }
-      $oldCart = Session::get('cart');
-      $cart = new Cart($oldCart);
-
-      return view('shop.shopping-cart', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice]);
-    }
-
->>>>>>> 624aba843e12b04359d2c8e89398c0ac3d3fa22a
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function postCheckout(Request $request){
+      if (!Session::has('cart')) {
+        return redirect()->route('shop.shopping-cart');
+      }
+      $oldCart = Session::get('cart');
+      $cart = new Cart($oldCart);
+
+      Stripe::setApiKey('sk_test_PtCrCm27nCrvMIfSNami46BX00okKnz25c');
+      try {
+  Charge::create([
+  "amount" => $cart->totalPrice,
+  "currency" => "usd",
+  "source" => $request->input('stripeToken'), // obtained with Stripe.js
+  "description" => "test charges"
+]);
+
+      } catch (\Exception $e) {
+             return redirect()->route('checkout')->with('error', $e->getMessage());
+      }
+
+      Session::forget('cart');
+      return redirect()->route('welcome')->with('success', 'successfully pucharsed product');
+
     }
     /**
      * Store a newly created resource in storage.
