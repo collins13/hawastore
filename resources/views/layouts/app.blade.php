@@ -1,128 +1,177 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+  <!-- CSRF Token -->
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css')}}">
-      <link rel="stylesheet" href="{{ asset('css/style.css')}}">
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css"/>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.js"></script>
-    <!-- Scripts -->
-    <script
-  src="https://code.jquery.com/jquery-3.4.1.js"
-  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-  crossorigin="anonymous"></script>
-  <script src="https://kit.fontawesome.com/760a30889d.js"></script>
-  <script src="https://use.fontawesome.com/3edb5296ee.js"></script>
+  <title>{{ config('app.name', 'Laravel') }}</title>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="e-commerce site well design with responsive view." />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="/image/favicon.png" rel="icon" type="image/png" >
+<link href="/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+<link href="/javascript/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700" rel="stylesheet"/>
+<link href="/css/stylesheet.css" rel="stylesheet">
+<link href="/css/respons.css" rel="stylesheet">
+<link href="/javascript/owl-carousel/owl.carousel.css" type="text/css" rel="stylesheet" media="screen" />
+<link href="/javascript/owl-carousel/owl.transitions.css" type="text/css" rel="stylesheet" media="screen" />
+<!-- Bootstrap style --> 
+<link id="callCss" rel="stylesheet" href="/themes/bootshop/bootstrap.min.css" media="screen"/>
+<link href="/themes/css/base.css" rel="stylesheet" media="screen"/>
+<!-- Bootstrap style responsive -->	
+<link href="/themes/css/bootstrap-responsive.min.css" rel="stylesheet"/>
+<link href="/themes/css/font-awesome.css" rel="stylesheet" type="text/css">
+<!-- Google-code-prettify -->	
+<link href="/themes/js/google-code-prettify/prettify.css" rel="stylesheet"/>
+<!-- fav and touch icons -->
+<link rel="shortcut icon" href="themes/images/ico/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/themes/images/ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/themes/images/ico/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/themes/images/ico/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="/themes/images/ico/apple-touch-icon-57-precomposed.png">
+<style type="text/css" id="enject"></style>
+<script type="text/javascript" src="/javascript/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/javascript/bootstrap/js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="/javascript/template_js/jstree.min.js"></script>
+<script type="text/javascript" src="/javascript/template_js/template.js"></script>
+<script type="text/javascript" src="/javascript/common.js" ></script>
+<script type="text/javascript" src="/javascript/global.js"></script>
+<script type="text/javascript" src="/javascript/owl-carousel/owl.carousel.min.js" ></script>
+  
 
-
-  {{--  <script src="{{ asset('js/app.js') }}" defer></script>--}}
-
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <!-- Styles -->
+  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
+
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Hawa Store') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+  <div id="app">
+@include('includes.nav')
+    
+   
+  
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-                      <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                      </li>
-                      <li class="nav-item active">
-                        <a class="nav-link text-warning" href="#">Link</a>
-                      </li>
-                      <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-warning" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Categories
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item" href="#">Action</a>
-                          <a class="dropdown-item" href="#">Another action</a>
-                          <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                      </li>
-                      <li class="nav-item active text-warning">
-                        <a class="nav-link disabled text-warning" href="#">Disabled</a>
-                      </li>
-                    </ul>
+  <main class="row">
+    
+    <div class="col-md-2 col-sm-2">
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{'shopping-cart'}}">
-                              <i class="fas fa-shopping-cart">Shopping Cart</i>
-                              <span class="badge">{{Session::has('cart')? Session::get('cart')->totalQty:''}}</span>
-                            </a>
-                        </li>
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+    </div>
+    <div class="col-md-10 col-sm-10">
+      <div class="py-4 container">
+        @yield('content')
+      </div>
+    </div>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+  </main>
+  </div>
+  <!-- Footer ================================================================== -->
+  <div id="footerSection">
+      <div class="container">
+          <div class="row">
+              <div class="span3">
+                  <h5>ACCOUNT</h5>
+                  <a href="login.html">YOUR ACCOUNT</a>
+                  <a href="login.html">PERSONAL INFORMATION</a>
+                  <a href="login.html">ADDRESSES</a>
+                  <a href="login.html">DISCOUNT</a>
+                  <a href="login.html">ORDER HISTORY</a>
+              </div>
+              <div class="span3">
+                  <h5>INFORMATION</h5>
+                  <a href="contact.html">CONTACT</a>
+                  <a href="register.html">REGISTRATION</a>
+                  <a href="legal_notice.html">LEGAL NOTICE</a>
+                  <a href="tac.html">TERMS AND CONDITIONS</a>
+                  <a href="faq.html">FAQ</a>
+              </div>
+              <div class="span3">
+                  <h5>OUR OFFERS</h5>
+                  <a href="#">NEW PRODUCTS</a>
+                  <a href="#">TOP SELLERS</a>
+                  <a href="special_offer.html">SPECIAL OFFERS</a>
+                  <a href="#">MANUFACTURERS</a>
+                  <a href="#">SUPPLIERS</a>
+              </div>
+              <div id="socialMedia" class="span3 pull-right">
+                  <h5>SOCIAL MEDIA </h5>
+                  <a href="#"><img width="60" height="60" src="themes/images/facebook.png" title="facebook" alt="facebook" /></a>
+                  <a href="#"><img width="60" height="60" src="themes/images/twitter.png" title="twitter" alt="twitter" /></a>
+                  <a href="#"><img width="60" height="60" src="themes/images/youtube.png" title="youtube" alt="youtube" /></a>
+              </div>
+          </div>
+          <p class="pull-right">&copy; Bootshop</p>
+      </div>
+      <!-- Container End -->
+  </div>
+  <!-- Placed at the end of the document so the pages load faster ============================================= -->
+  <script src="themes/js/jquery.js" type="text/javascript"></script>
+  <script src="themes/js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="themes/js/google-code-prettify/prettify.js"></script>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
+  <script src="themes/js/bootshop.js"></script>
+  <script src="themes/js/jquery.lightbox-0.5.js"></script>
 
-        <main class="row">
-          <div class="col-md-2 col-sm-2">
+  <!-- Themes switcher section ============================================================================================= -->
+  <div id="secectionBox">
+      <link rel="stylesheet" href="themes/switch/themeswitch.css" type="text/css" media="screen" />
+      <script src="themes/switch/theamswitcher.js" type="text/javascript" charset="utf-8"></script>
+      <div id="themeContainer">
+          <div id="hideme" class="themeTitle">Style Selector</div>
+          <div class="themeName">Oregional Skin</div>
+          <div class="images style">
+              <a href="themes/css/#" name="bootshop"><img src="themes/switch/images/clr/bootshop.png" alt="bootstrap business templates" class="active"></a>
+              <a href="themes/css/#" name="businessltd"><img src="themes/switch/images/clr/businessltd.png" alt="bootstrap business templates" class="active"></a>
+          </div>
+          <div class="themeName">Bootswatch Skins (11)</div>
+          <div class="images style">
+              <a href="themes/css/#" name="amelia" title="Amelia"><img src="themes/switch/images/clr/amelia.png" alt="bootstrap business templates"></a>
+              <a href="themes/css/#" name="spruce" title="Spruce"><img src="themes/switch/images/clr/spruce.png" alt="bootstrap business templates"></a>
+              <a href="themes/css/#" name="superhero" title="Superhero"><img src="themes/switch/images/clr/superhero.png" alt="bootstrap business templates"></a>
+              <a href="themes/css/#" name="cyborg"><img src="themes/switch/images/clr/cyborg.png" alt="bootstrap business templates"></a>
+              <a href="themes/css/#" name="cerulean"><img src="themes/switch/images/clr/cerulean.png" alt="bootstrap business templates"></a>
+              <a href="themes/css/#" name="journal"><img src="themes/switch/images/clr/journal.png" alt="bootstrap business templates"></a>
+              <a href="themes/css/#" name="readable"><img src="themes/switch/images/clr/readable.png" alt="bootstrap business templates"></a>
+              <a href="themes/css/#" name="simplex"><img src="themes/switch/images/clr/simplex.png" alt="bootstrap business templates"></a>
+              <a href="themes/css/#" name="slate"><img src="themes/switch/images/clr/slate.png" alt="bootstrap business templates"></a>
+              <a href="themes/css/#" name="spacelab"><img src="themes/switch/images/clr/spacelab.png" alt="bootstrap business templates"></a>
+              <a href="themes/css/#" name="united"><img src="themes/switch/images/clr/united.png" alt="bootstrap business templates"></a>
+              <p style="margin:0;line-height:normal;margin-left:-10px;display:none;"><small>These are just examples and you can build your own color scheme in the backend.</small></p>
+          </div>
+          <div class="themeName">Background Patterns </div>
+          <div class="images patterns">
+              <a href="themes/css/#" name="pattern1"><img src="themes/switch/images/pattern/pattern1.png" alt="bootstrap business templates" class="active"></a>
+              <a href="themes/css/#" name="pattern2"><img src="themes/switch/images/pattern/pattern2.png" alt="bootstrap business templates"></a>
+              <a href="themes/css/#" name="pattern3"><img src="themes/switch/images/pattern/pattern3.png" alt="bootstrap business templates"></a>
+              <a href="themes/css/#" name="pattern4"><img src="themes/switch/images/pattern/pattern4.png" alt="bootstrap business templates"></a>
+              <a href="themes/css/#" name="pattern5"><img src="themes/switch/images/pattern/pattern5.png" alt="bootstrap business templates"></a>
+              <a href="themes/css/#" name="pattern6"><img src="themes/switch/images/pattern/pattern6.png" alt="bootstrap business templates"></a>
+              <a href="themes/css/#" name="pattern7"><img src="themes/switch/images/pattern/pattern7.png" alt="bootstrap business templates"></a>
+              <a href="themes/css/#" name="pattern8"><img src="themes/switch/images/pattern/pattern8.png" alt="bootstrap business templates"></a>
+              <a href="themes/css/#" name="pattern9"><img src="themes/switch/images/pattern/pattern9.png" alt="bootstrap business templates"></a>
+              <a href="themes/css/#" name="pattern10"><img src="themes/switch/images/pattern/pattern10.png" alt="bootstrap business templates"></a>
+
+              <a href="themes/css/#" name="pattern11"><img src="themes/switch/images/pattern/pattern11.png" alt="bootstrap business templates"></a>
+              <a href="themes/css/#" name="pattern12"><img src="themes/switch/images/pattern/pattern12.png" alt="bootstrap business templates"></a>
+              <a href="themes/css/#" name="pattern13"><img src="themes/switch/images/pattern/pattern13.png" alt="bootstrap business templates"></a>
+              <a href="themes/css/#" name="pattern14"><img src="themes/switch/images/pattern/pattern14.png" alt="bootstrap business templates"></a>
+              <a href="themes/css/#" name="pattern15"><img src="themes/switch/images/pattern/pattern15.png" alt="bootstrap business templates"></a>
+
+              <a href="themes/css/#" name="pattern16"><img src="themes/switch/images/pattern/pattern16.png" alt="bootstrap business templates"></a>
+              <a href="themes/css/#" name="pattern17"><img src="themes/switch/images/pattern/pattern17.png" alt="bootstrap business templates"></a>
+              <a href="themes/css/#" name="pattern18"><img src="themes/switch/images/pattern/pattern18.png" alt="bootstrap business templates"></a>
+              <a href="themes/css/#" name="pattern19"><img src="themes/switch/images/pattern/pattern19.png" alt="bootstrap business templates"></a>
+              <a href="themes/css/#" name="pattern20"><img src="themes/switch/images/pattern/pattern20.png" alt="bootstrap business templates"></a>
 
           </div>
-       <div class="col-md-10 col-sm-10">
-         <div class="py-4 container">
-             @yield('content')
-         </div>
-       </div>
-
-        </main>
-    </div>
-    @yield('scripts')
+      </div>
+  </div>
+  <span id="themesBtn"></span>
+  @yield('scripts')
 </body>
+
 </html>
