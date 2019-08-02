@@ -93,9 +93,21 @@ class productController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+
+    public function create(){
+      return view('admin.create');
+    }
     public function store(Request $request)
     {
-        //
+        $this->$request->validate( [
+          "title"=>"required",
+          "price"=>"require",
+          "description"=>"required",
+          "category"=>"required",
+          "location"=>"required"
+        ]);
+
     }
     /**
      * Display the specified resource.
