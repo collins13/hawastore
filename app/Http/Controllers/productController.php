@@ -7,6 +7,7 @@ use App\Product;
 use Session;
 use Stripe\Charge;
 use Stripe\Stripe;
+
 class productController extends Controller
 {
   public function __construct()
@@ -93,20 +94,46 @@ class productController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-
+    public function getProduct(){
+      return view('admin.includes.products');
+    }
 
     public function create(){
       return view('admin.create');
     }
     public function store(Request $request)
     {
-        $this->$request->validate( [
+      error_reporting(0);
+        $this->validate($request, [
           "title"=>"required",
-          "price"=>"require",
+          "price"=>"required",
           "description"=>"required",
           "category"=>"required",
-          "location"=>"required"
+          "image"=>"image|nullable|max:1999"
+          //"location"=>"required"
         ]);
+        if ($request->hasFile('image')){
+
+
+          $fileNameWithExt = $request->file('image')->getClientOriginalName();
+          $filename = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+          $extension = $request->file('image')->getClientOriginalExtension();
+          $fileNameToStore = $filename.'_'.time().'.'.$extension;
+          $path = $request->file('image')->storeAs('public/images', $fileNameToStore);
+         }
+         else{
+           $fileNameToStore = 'noimage.jpg';
+         }
+
+ $product= new Product();
+ $product->title= $request->input('title');
+ $product->image = $fileNameToStore;
+ $product->description = $request->input('description');
+ $product->category_id = $request->input('category');
+ $product->price = $request->input('price');
+ $product->save();
+
+ return redirect()->back()->with('success', 'product added succesfully');
 
     }
     /**
@@ -150,4 +177,5 @@ class productController extends Controller
     {
         //
     }
+   
 }
