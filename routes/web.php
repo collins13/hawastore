@@ -23,7 +23,7 @@ Route::post('checkout', 'productController@postCheckout')->name('checkout');
 Auth::routes();
 
 Route::get('/profile', 'HomeController@index')->name('Hawa Store');
-Route::get('/admin', function(){
+Route::get('admin', function(){
   return view('admin.index');
 })->middleware('role:admin');;
 
@@ -33,3 +33,6 @@ Route::post('/strore', 'roleController@store')->name('admin.store');
 Route::get('/edit/{id}', 'roleController@edit')->name('admin.edit');
 Route::patch('/update/{id}', 'roleController@update')->name('admin.update');
 Route::post('/delete{id}', 'roleController@destroy')->name('admin.delete');
+Route::get('/products', 'productController@getProduct')->name('products');
+Route::post('/products', 'productController@store')->name('products');
+
