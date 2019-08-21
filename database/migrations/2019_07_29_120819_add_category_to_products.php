@@ -16,7 +16,7 @@ class AddCategoryToProducts extends Migration
         Schema::table('products', function (Blueprint $table) {
             $table->string('category_id');
         });
-    }
+    }SS
 
     /**
      * Reverse the migrations.
