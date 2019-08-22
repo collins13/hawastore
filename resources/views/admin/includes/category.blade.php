@@ -54,8 +54,15 @@
                         <th scope="row">{{$category->id}}</th>
                         <td>{{$category->name}}</td>
                         <td>
-                            <a href="" class="btn btn-warning">Edit</a>
-                            <a href="" class="btn btn-danger">Delete</a>
+                        <a href="{{route('category',$category->id)}}" class="btn btn-warning btn-sm">Edit</a>
+                        <br/>
+                        <br/>
+                        <form action="{{route("category.delete", $category->id)}}" method="POST">
+                                {{ csrf_field() }}
+                                @method('DELETE')
+                                           <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                       
+                                 </form>
                         </td>
                                
                      

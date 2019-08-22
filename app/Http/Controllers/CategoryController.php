@@ -54,7 +54,8 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $category = Categories::find($id);
+        return view('admin.includes.category-show')->with('category', $category);
     }
 
     /**
@@ -77,7 +78,14 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|unique:categories'
+        ]);
+         $categories = Categories::find($id);
+         $categories->name = $request->input('name');
+         $categories->save();
+
+       return redirect()->route('categories')->with('success', 'category edited');
     }
 
     /**
@@ -88,6 +96,12 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+       
+        
+         $categories = Categories::find($id);
+      
+         $categories->delete();
+
+       return redirect()->route('categories')->with('error', 'category deleted');
     }
 }

@@ -37,6 +37,11 @@ Route::get('/products', 'productController@getProduct')->name('products');
 Route::post('/products', 'productController@store')->name('products');
 Route::get('/categories', 'CategoryController@index')->name('categories');
 Route::post('/categories', 'CategoryController@store')->name('categories');
+Route::get('/category/{id}', 'CategoryController@show')->name('category');
+Route::put('/category/{id}', 'CategoryController@update')->name('category.update');
+Route::delete('/delete/{id}', 'CategoryController@destroy')->name('category.delete');
+
+
 
 
 
