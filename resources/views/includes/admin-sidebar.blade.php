@@ -25,6 +25,13 @@
                     <span>Products</span></a>
                     @endrole
             </li>
+            <li class="nav-item active">
+            <a class="nav-link" href="{{route('categories')}}">
+                        <i class="fas fa-fw fa-table"></i>
+                        @role('admin')
+                        <span>Categories</span></a>
+                        @endrole
+                </li>
 
 
             <!-- Divider -->
